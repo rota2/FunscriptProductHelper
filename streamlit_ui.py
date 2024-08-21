@@ -29,16 +29,19 @@ DEFAULT_DELIVERY_TEXT = ""
 DEFAULTS = {}
 
 with open(DEFAULT_FILEPATH, 'r') as file:
-    DEFAULTS = json.load(file)
-    HEADERS = {
-        "Authorization": DEFAULTS["SELLIX_AUTH_TOKEN"],
-        "X-Sellix-Merchant": DEFAULTS["SELLIX_SHOP"],
-        "Content-Type": "application/json",
-    }
-    DEFAULT_GATEWAY = DEFAULTS["DEFAULT_GATEWAYS"].split(",")
-    DEFAULT_DELIVERY_TEXT = DEFAULTS["DEFAULT_DELIVERY_TEXT"]
+    try:
+        DEFAULTS = json.load(file)
+        HEADERS = {
+            "Authorization": DEFAULTS["SELLIX_AUTH_TOKEN"],
+            "X-Sellix-Merchant": DEFAULTS["SELLIX_SHOP"],
+            "Content-Type": "application/json",
+        }
+        DEFAULT_GATEWAY = DEFAULTS["DEFAULT_GATEWAYS"].split(",")
+        DEFAULT_DELIVERY_TEXT = DEFAULTS["DEFAULT_DELIVERY_TEXT"]
 
-    client = Sellix(DEFAULTS["SELLIX_AUTH_TOKEN"], DEFAULTS["SELLIX_SHOP"])
+        client = Sellix(DEFAULTS["SELLIX_AUTH_TOKEN"], DEFAULTS["SELLIX_SHOP"])
+    except:
+        pass
 
 
 
