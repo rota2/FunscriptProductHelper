@@ -1,0 +1,4 @@
+BeautifulSoup
+sellix-python-sdk
+pyshorteners
+pyperclip
